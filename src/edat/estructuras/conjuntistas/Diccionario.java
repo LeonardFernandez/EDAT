@@ -309,10 +309,38 @@ public class Diccionario {
             if (nodo.getDerecho() != null) {
                 cadena = cadena + nodo.getDerecho().getClave();
             }
+            cadena = cadena + "     Altura: " + nodo.getAltura();
             cadena = cadena + "\n";
             cadena = cadena + toString(nodo.getIzquierdo());
             cadena = cadena + toString(nodo.getDerecho());
         }
         return cadena;
+    }
+    
+    public Object obtenerDato(Comparable clave) {
+        Object retornar = null;
+        if (!esVacio()) {
+            NodoAVLDic aux = buscarNodo(raiz, clave);
+            if (aux != null) {
+                retornar = aux.getDato();
+            }
+        }
+        return retornar;
+    }
+    
+    private NodoAVLDic buscarNodo(NodoAVLDic nodo, Comparable clave) {
+        NodoAVLDic nodoEncontrado = null;
+        if (nodo != null) {
+            if (nodo.getClave().equals(clave)) { //Caso base
+                nodoEncontrado = nodo;
+            } else {
+                if (nodo.getClave().compareTo(clave) < 0) {
+                    nodoEncontrado = buscarNodo(nodo.getDerecho(), clave);
+                } else {
+                    nodoEncontrado = buscarNodo(nodo.getIzquierdo(), clave);
+                }
+            }
+        }
+        return nodoEncontrado;
     }
 }

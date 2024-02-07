@@ -46,7 +46,7 @@ public class Lista {
     public boolean eliminar(int posicion){
          boolean exito = false;
         
-        if (posicion >= 1 && posicion <= longitud + 1) {
+        if (posicion >= 1 && posicion <= longitud) {
             if(posicion==1){ //Caso especial posicion 1
                 cabecera=cabecera.getEnlace();
             }else{
@@ -56,7 +56,7 @@ public class Lista {
                 }
                 aux.setEnlace(aux.getEnlace().getEnlace());
             }
-            longitud--;
+            longitud=longitud-1;
             exito=true;
         }
         return exito;
@@ -123,6 +123,27 @@ public class Lista {
     public void vaciar(){
         cabecera=null;
         longitud=0;
+    }
+    
+    public Lista clone() {
+        Lista clonada = new Lista();
+        if (!esVacia()) {
+            Nodo aux, auxClon;
+            /*A la cabecera de lista a clonar le asigno el elemento de la cabecera 
+            de la lista original y null como enlace*/
+            clonada.cabecera = new Nodo(cabecera.getElem(), null);
+            aux = cabecera; //Aux apunta a la cabecera, se movera sobre la lista original
+            auxClon = clonada.cabecera; //auxClon apunta a la cabecera de la clonada, se movera sobre la misma lista 
+            aux = aux.getEnlace();//aux avanza una pos sobre la lista
+            while (aux != null) {
+                //Al enlace del nodo sobre el que estamos le asignamos el elemento correspendiente y su enlace null
+                auxClon.setEnlace(new Nodo(aux.getElem(), null));
+                aux = aux.getEnlace();
+                auxClon = auxClon.getEnlace();
+            }
+            clonada.longitud = longitud;
+        }
+        return clonada;
     }
     
     

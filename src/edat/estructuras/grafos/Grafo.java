@@ -4,6 +4,8 @@
  */
 package edat.estructuras.grafos;
 
+import edat.estructuras.lineales.dinamicas.Lista;
+
 /**
  *
  * @author Leo
@@ -123,7 +125,7 @@ public class Grafo {
                     adyacente = adyacente.getSigAdyacente();
                 }
             }
-            exito=true;
+            exito = true;
         }
         return exito;
     }
@@ -134,7 +136,7 @@ public class Grafo {
         NodoAdy adyacente;
         vertice = inicio;
         while (vertice != null) {
-            cadena = cadena + "#" +vertice.getElem();
+            cadena = cadena + "#" + vertice.getElem();
             adyacente = vertice.getPrimerAdy();
             while (adyacente != null) {
                 cadena = cadena + "\n     ";
@@ -148,4 +150,190 @@ public class Grafo {
         return cadena;
     }
 
+    public Lista caminoMenosVertices(Object origen, Object destino) {
+        //Este metodo devuelve el recorrido que menos vertices visita
+        Lista caminoMenor = new Lista();
+        NodoVert vertO = null;
+        NodoVert vertD = null;
+        NodoVert aux = inicio;
+        while (aux != null && (vertO == null || vertD == null)) {
+            if (aux.getElem().equals(origen)) {
+                vertO = aux;
+            }
+            if (aux.getElem().equals(destino)) {
+                vertD = aux;
+            }
+            aux = aux.getSigVertice();
+        }
+
+        if (vertO != null && vertD != null) { //Si ambos vertices existen en el grafo
+            Lista visitados = new Lista(); //Lista para control de visitados
+            caminoMenor = caminoMenosVerticesR(vertO, destino, visitados, caminoMenor);
+        }
+        return caminoMenor;
+    }
+
+    private Lista caminoMenosVerticesR(NodoVert vert, Object destino, Lista visitados, Lista caminoMenor) {
+        if (vert != null) {
+            visitados.insertar(vert.getElem(), visitados.longitud() + 1); //Marcamos nodo como visitado
+            if (vert.getElem().equals(destino)) { //Se encontro un camino
+                if (visitados.longitud() < caminoMenor.longitud() || caminoMenor.esVacia()) {
+                    caminoMenor = visitados.clone();
+                }
+            } else {
+                NodoAdy ady = vert.getPrimerAdy();
+                while (ady != null) { //Recorremos todos los adyacentes
+                    if (visitados.localizar(ady.getVertice().getElem()) < 0) { //Si el adyacente no ha sido visitado
+                        if (visitados.longitud() + 1 < caminoMenor.longitud() || caminoMenor.esVacia()) {
+                            /*Si la longitud del caminoMenor es mayor que el recorrido actual entonces
+                            seguimos buscando, caso contrario cortamos la busqueda*/
+                            caminoMenor = caminoMenosVerticesR(ady.getVertice(), destino, visitados, caminoMenor);
+                        }
+                    }
+                    ady = ady.getSigAdyacente();
+                }
+            }
+            visitados.eliminar(visitados.longitud()); //Se elimina oara continuar buscando otros caminos
+        }
+        return caminoMenor;
+    }
+
+    public Camino caminoMenorDistancia(Object origen, Object destino) {
+        //Este metodo devuelve el recorrido que menos vertices visita
+        Camino caminoMenor = new Camino();
+        NodoVert vertO = null;
+        NodoVert vertD = null;
+        NodoVert aux = inicio;
+        while (aux != null && (vertO == null || vertD == null)) {
+            if (aux.getElem().equals(origen)) {
+                vertO = aux;
+            }
+            if (aux.getElem().equals(destino)) {
+                vertD = aux;
+            }
+            aux = aux.getSigVertice();
+        }
+
+        if (vertO != null && vertD != null) { //Si ambos vertices existen en el grafo
+            Lista visitados = new Lista(); //Lista para control de visitados
+            caminoMenor = caminoMenorDistanciaR(vertO, destino, visitados, 0, caminoMenor);
+        }
+        return caminoMenor;
+    }
+
+    private Camino caminoMenorDistanciaR(NodoVert vert, Object destino, Lista visitados, int distanciaRecorrida, Camino caminoMenor) {
+        if (vert != null) {
+            visitados.insertar(vert.getElem(), visitados.longitud() + 1); //Marcamos nodo como visitado
+            if (vert.getElem().equals(destino)) { //Se encontro un camino
+                if (distanciaRecorrida < caminoMenor.getDistancia() || caminoMenor.esVacio()) {
+                    caminoMenor.setDistancia(distanciaRecorrida);
+                    caminoMenor.setRecorrido(visitados.clone());
+                }
+            } else { //Si no es el nodo buscado
+                NodoAdy ady = vert.getPrimerAdy();
+                while (ady != null) {
+                    if (visitados.localizar(ady.getVertice().getElem()) < 0) { //Si el adyacente no ha sido visitado
+                        if ((distanciaRecorrida + ady.getEtiqueta()) < caminoMenor.getDistancia() || caminoMenor.esVacio()) {
+                            caminoMenor = caminoMenorDistanciaR(ady.getVertice(), destino, visitados, distanciaRecorrida + (ady.getEtiqueta()), caminoMenor);
+                        }
+                    }
+                    ady = ady.getSigAdyacente();
+                }
+            }
+            visitados.eliminar(visitados.longitud());
+        }
+        return caminoMenor;
+    }
+
+    public Lista caminoSinVertice(Object A, Object B, Object C) {
+        //Caminos entre A y B sin pasar por vertice C
+        Lista caminos = new Lista();
+        NodoVert vertA = null;
+        NodoVert vertB = null;
+        NodoVert vertC = null;
+        NodoVert aux = inicio;
+        while (aux != null && (vertA == null || vertB == null || vertC == null)) {
+            if (aux.getElem().equals(A)) {
+                vertA = aux;
+            }
+            if (aux.getElem().equals(B)) {
+                vertB = aux;
+            }
+            if (aux.getElem().equals(C)) {
+                vertC = aux;
+            }
+            aux = aux.getSigVertice();
+        }
+        if (vertA != null && vertB != null && vertC != null) {
+            Lista visitados = new Lista();
+            caminoSinVerticeR(vertA, B, C, visitados, caminos);
+        }
+        return caminos;
+    }
+
+    private void caminoSinVerticeR(NodoVert vertA, Object B, Object C, Lista visitados, Lista caminos) {
+        if (vertA != null) {
+            visitados.insertar(vertA.getElem(), visitados.longitud() + 1); //Marcamos nodo como visitado
+            if (vertA.getElem().equals(B)) { //Se encuentra un camino
+                Lista caminoNuevo = visitados.clone();
+                caminos.insertar(caminoNuevo, caminos.longitud() + 1);
+            } else {
+                NodoAdy ady = vertA.getPrimerAdy();
+                while (ady != null) {
+                    if (visitados.localizar(ady.getVertice().getElem()) < 0 && !ady.getVertice().getElem().equals(C)) {
+                        //Si el adyacente no ha sido visitado y tampoco se trata del vertice C
+                        caminoSinVerticeR(ady.getVertice(), B, C, visitados, caminos);
+                    }
+                    ady = ady.getSigAdyacente();
+                }
+            }
+            visitados.eliminar(visitados.longitud());
+        }
+    }
+    
+    public Camino caminMaxDistancia(Object origen, Object destino, int distanciaMax){
+        // Verifica si es posible llegar de A a B recorriendo como máximo una cantidad X de kilómetros
+        Camino camino = null;
+        NodoVert vertO = null;
+        NodoVert vertD = null;
+        NodoVert aux = inicio;
+        while (aux != null && (vertO == null || vertD == null)) {
+            if (aux.getElem().equals(origen)) {
+                vertO = aux;
+            }
+            if (aux.getElem().equals(destino)) {
+                vertD = aux;
+            }
+            aux = aux.getSigVertice();
+        }
+
+        if (vertO != null && vertD != null) {
+            Lista visitados = new Lista();
+            camino=caminoMaxDistanciaR(vertO, destino, visitados, distanciaMax, 0, camino);
+        }
+        return camino;
+    }
+    
+    private Camino caminoMaxDistanciaR(NodoVert vert, Object destino, Lista visitados, int distanciaMax, int distanciaRecorrida, Camino caminoMaxDistancia){
+        //Metodo recursivo 
+        if(vert!=null){
+            visitados.insertar(vert.getElem(), visitados.longitud()+1);
+            if(vert.getElem().equals(destino)){
+                caminoMaxDistancia = new Camino();
+                caminoMaxDistancia.setRecorrido(visitados.clone());
+                caminoMaxDistancia.setDistancia(distanciaRecorrida);
+            }else{
+                NodoAdy ady = vert.getPrimerAdy();
+                while(ady!=null && caminoMaxDistancia==null){
+                    if(visitados.localizar(ady.getVertice().getElem())<0  && distanciaRecorrida+ady.getEtiqueta()<=distanciaMax){
+                        //Si no ha sido visitado AND no se hallo camino AND distanciaRecorrida sigue siendo menor que distanciaMax
+                        caminoMaxDistancia = caminoMaxDistanciaR(ady.getVertice(), destino, visitados, distanciaMax, distanciaRecorrida+ady.getEtiqueta(), caminoMaxDistancia);
+                    }
+                    ady = ady.getSigAdyacente();
+                }
+            }
+            visitados.eliminar(visitados.longitud());
+        }
+        return caminoMaxDistancia;
+    }
 }
