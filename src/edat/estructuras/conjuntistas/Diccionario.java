@@ -4,6 +4,8 @@
  */
 package edat.estructuras.conjuntistas;
 
+import edat.estructuras.lineales.dinamicas.Lista;
+
 /**
  *
  * @author Leo
@@ -343,4 +345,28 @@ public class Diccionario {
         }
         return nodoEncontrado;
     }
+    
+    public Lista listarRango(Comparable min, Comparable max) {
+        Lista lista = new Lista();
+        if (!esVacio()) {
+            listarRangoR(raiz, lista, min, max);
+        }
+        return lista;
+    }
+    
+    private void listarRangoR(NodoAVLDic nodo, Lista lista, Comparable min, Comparable max){
+        if(nodo!=null){
+            Comparable clave = nodo.getClave();
+            if(clave.compareTo(min)>=0 && clave.compareTo(max)<=0){
+                lista.insertar(clave, lista.longitud()+1);
+            }
+            if(clave.compareTo(min)>0){
+                listarRangoR(nodo.getIzquierdo(), lista, min, max);
+            }
+            if(clave.compareTo(max)<0){
+               listarRangoR(nodo.getDerecho(), lista, min, max);
+            }
+        }
+    }
+    
 }

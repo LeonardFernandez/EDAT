@@ -1,0 +1,79 @@
+E;Alem;Favaloro;25;Buenos Aires;1104;6;6
+E;Lavalle;Soldado Desconocido;825;Buenos Aires;1104;6;6
+E;Catedral;Moguilliansky;286;Buenos Aires;1104;6;6
+E;Belgrano;Mazza;1200;Buenos Aires;1104;6;6
+E;Venezuela;Av Argentina;205;Rio Negro;8400;4;2
+E;Viedma;Olascoaga;105;Rio Negro;8400;4;2
+E;Fernandez;Av Argentina;95;Rio Negro;8400;4;2
+E;Borges;Leloir;65;Neuquen;8300;2;2
+E;Rodriguez;Alberdi;839;Rio Negro;8400;4;2
+E;Plaza Mistere;Libertador;205;Rio Negro;8400;4;2
+E;Peru;Godoy;205;Buenos Aires;1104;4;2
+E;Plaza de Mayo;San Martin;1430;Buenos Aires;1104;8;6
+E;Patricios;Felix;30;Rio Negro;8300;6;6
+E;Caseros;Roca;600;Buenos Aires;1104;6;6
+E;Cordoba;Lastra;800;Rio Negro;8300;6;6
+E;Pueyrredon;Newbery;325;Buenos Aires;1104;6;6
+E;Las Heras;Anaya;450;Buenos Aires;1104;6;6
+E;Lanteri;Leloir;855;Entre Rios;3100;6;6
+E;La Plata;Trabajador;1330;Buenos Aires;1104;6;6
+E;Bolivar;Ramon;845;Buenos Aires;1104;6;6
+E;Callao;Malvinas;770;Buenos Aires;1104;6;6
+E;Roca;Olessio;25;Rio Negro;8300;6;6
+E;Juramento;Sarmiento;97;Buenos Aires;1104;6;6
+E;Pellegrini;Tronador;99;Buenos Aires;1104;6;6
+L;C;La Plata;Peru;Belgrano;Bolivar;Callao;Las Heras
+L;B;Alem;Lavalle;Catedral;Belgrano;Venezuela;Viedma;Fernandez;Roca;Borges
+L;A;Plaza de Mayo;Peru;Plaza Mistere;Rodriguez;Borges
+L;D;Plaza de Mayo;Catedral;Pellegrini;Callao;Pueyrredon;Juramento;Roca
+L;E;Patricios;Caseros;Plaza Mistere;Venezuela;Cordoba;Pueyrredon;Las Heras;Lanteri
+R;La Plata;Peru;50
+R;Peru;Belgrano;14
+R;Belgrano;Bolivar;23
+R;Bolivar;Callao;27
+R;Callao;Las Heras;25
+R;Patricios;Caseros;90
+R;Caseros;Plaza Mistere;45
+R;Plaza Mistere;Venezuela;30
+R;Venezuela;Cordoba;23
+R;Cordoba;Pueyrredon;20
+R;Pueyrredon;Las Heras;60
+R;Las Heras;Lanteri;70
+R;Plaza de Mayo;Peru;55
+R;Peru;Plaza Mistere;19
+R;Plaza Mistere;Rodriguez;40
+R;Rodriguez;Borges;93
+R;Alem;Lavalle;14
+R;Lavalle;Catedral;29
+R;Catedral;Belgrano;23
+R;Belgrano;Venezuela;24
+R;Venezuela;Viedma;48
+R;Viedma;Fernandez;60
+R;Fernandez;Borges;76
+R;Fernandez;Roca;40
+R;Plaza de Mayo;Catedral;28
+R;Catedral;Pellegrini;59
+R;Pellegrini;Callao;22
+R;Callao;Pueyrredon;23
+R;Pueyrredon;Juramento;25
+R;Juramento;Roca;30
+T;2;diesel;3;3;A
+T;6;fuel oil;3;0;B
+T;13;híbrido;1;1;C
+T;20;diesel;1;0;D
+T;22;diesel;4;2;E
+T;27;electricidad;1;0;no-asignado
+T;31;gasolina;3;1;A
+T;35;gasolina;4;1;B
+T;36;gasolina;3;3;C
+T;42;híbrido;2;3;D
+T;44;fuel oil;4;2;E
+T;47;diesel;3;0;no-asignado
+T;55;diesel;4;2;A
+T;56;híbrido;2;1;B
+T;59;electricidad;3;3;C
+T;60;electricidad;3;1;D
+T;63;diesel;2;1;E
+T;68;electricidad;4;2;no-asignado
+T;75;híbrido;3;2;A
+T;79;fuel oil;1;3;B
