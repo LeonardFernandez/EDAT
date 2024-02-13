@@ -338,7 +338,7 @@ public class TrenesSA {
         //Dada una cadena, devolver todas las estaciones cuyo nombre comienza con dicha subcadena
         String cadena = "";
         subcadena = subcadena.trim();
-        Lista lista = estaciones.listarRango(subcadena, subcadena + "ZZZZZZZZZZZ");
+        Lista lista = estaciones.listarRango(subcadena, subcadena + "zzzzzzzzz");
         if (!lista.esVacia()) {
             cadena = "Las estaciones con prefijo " + subcadena + " son: ";
             int longitud = lista.longitud();

@@ -77,17 +77,12 @@ Tren 63 cargado con exito
 Tren 68 cargado con exito
 Tren 75 cargado con exito
 Tren 79 cargado con exito
-Tren 1 agregado con exito
-Nueva conexion Bolivar-Cordoba 12km
-Conexion Fernandez-Viedma eliminada
-Estacion Plottier agregada con exito
 >>> DETALLE SISTEMA CARGADO <<<
 ----TRENES----
 35  HI:20  HD:60     Altura: 4
-20  HI:6  HD:27     Altura: 3
-6  HI:2  HD:13     Altura: 2
-2  HI:1  HD:     Altura: 1
-1  HI:HD:     Altura: 0
+20  HI:6  HD:27     Altura: 2
+6  HI:2  HD:13     Altura: 1
+2  HI:HD:     Altura: 0
 13  HI:HD:     Altura: 0
 27  HI:22  HD:31     Altura: 1
 22  HI:HD:     Altura: 0
@@ -106,7 +101,7 @@ Estacion Plottier agregada con exito
 79  HI:HD:     Altura: 0
 
 ----ESTACIONES----
-Lavalle  HI:Catedral  HD:Pueyrredon     Altura: 4
+Lavalle  HI:Catedral  HD:Rodriguez     Altura: 4
 Catedral  HI:Borges  HD:La Plata     Altura: 3
 Borges  HI:Belgrano  HD:Caseros     Altura: 2
 Belgrano  HI:Alem  HD:Bolivar     Altura: 1
@@ -120,14 +115,13 @@ Cordoba  HI:HD:     Altura: 0
 Juramento  HI:HD:     Altura: 0
 Lanteri  HI:HD:Las Heras     Altura: 1
 Las Heras  HI:HD:     Altura: 0
-Pueyrredon  HI:Plaza Mistere  HD:Rodriguez     Altura: 3
-Plaza Mistere  HI:Pellegrini  HD:Plaza de Mayo     Altura: 2
+Rodriguez  HI:Plaza Mistere  HD:Venezuela     Altura: 3
+Plaza Mistere  HI:Pellegrini  HD:Pueyrredon     Altura: 2
 Pellegrini  HI:Patricios  HD:Peru     Altura: 1
 Patricios  HI:HD:     Altura: 0
 Peru  HI:HD:     Altura: 0
-Plaza de Mayo  HI:HD:Plottier     Altura: 1
-Plottier  HI:HD:     Altura: 0
-Rodriguez  HI:Roca  HD:Venezuela     Altura: 2
+Pueyrredon  HI:Plaza de Mayo  HD:Roca     Altura: 1
+Plaza de Mayo  HI:HD:     Altura: 0
 Roca  HI:HD:     Altura: 0
 Venezuela  HI:HD:Viedma     Altura: 1
 Viedma  HI:HD:     Altura: 0
@@ -135,7 +129,6 @@ Viedma  HI:HD:     Altura: 0
 ----LINEAS----
 [A, B, C, D, E]
 ----MAPA DE TRENES----
-#Plottier
 #Pellegrini
      ---22->Callao
      ---59->Catedral
@@ -151,7 +144,6 @@ Viedma  HI:HD:     Altura: 0
      ---25->Las Heras
      ---27->Bolivar
 #Bolivar
-     ---12->Cordoba
      ---27->Callao
      ---23->Belgrano
 #La Plata
@@ -168,7 +160,6 @@ Viedma  HI:HD:     Altura: 0
      ---60->Las Heras
      ---20->Cordoba
 #Cordoba
-     ---12->Bolivar
      ---20->Pueyrredon
      ---23->Venezuela
 #Caseros
@@ -198,7 +189,9 @@ Viedma  HI:HD:     Altura: 0
 #Fernandez
      ---40->Roca
      ---76->Borges
+     ---60->Viedma
 #Viedma
+     ---60->Fernandez
      ---48->Venezuela
 #Venezuela
      ---48->Viedma
