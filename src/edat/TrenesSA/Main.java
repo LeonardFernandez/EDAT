@@ -57,32 +57,27 @@ public class Main {
                     //ABM de la red de rieles (Altas, Bajas, Modificaciones)
                     ABMRieles();
                     break;
-//                case 6:
-//                    //Consultas sobre trenes
-//                    consultaTrenes();
-//                    break;
-//                case 7:
-//                    //Consultas sobre estaciones
-//                    consultaEstaciones();
-//                    break;
-//                case 8:
-//                    //Consultas sobre viajes
-//                    consultasViajes();
-//                    break;
+                case 6:
+                    //Consultas sobre trenes
+                    consultaTrenes();
+                    break;
+                case 7:
+                    //Consultas sobre estaciones
+                    consultaEstaciones();
+                    break;
+                case 8:
+                    //Consultas sobre viajes
+                    consultaViajes();
+                    break;
                 case 9:
                     // Mostrar sistema
                     System.out.println(sistema.mostrarSistema());
                     break;
-//                case 10:
-//                    System.out.println("Saliendo del programa. ¡Hasta luego!");
-//                    registrarLog("ESTADO FINAL");
-//                    registrarLog("___________________________________________");
-//                    registrarLog(estaciones.toString());
-//                    registrarLog(lineas.toString());
-//                    registrarLog(rieles.toString());
-//                    registrarLog(trenes.toString());
-//
-//                    break;
+                case 10:
+                    //Finaliza ejecucion, guarda estado final del sistema
+                    System.out.println("Ejecucion finalizada!");
+                    sistema.terminarEjecucion();
+                    break;
                 default:
                     System.out.println("Opcion no valida. Intente de nuevo.");
                     break;
@@ -232,11 +227,15 @@ public class Main {
         String linea="";
         Lista lineas = sistema.obtenerListaLineas();
         System.out.println(lineas.toString());
-        System.out.println("Seleccione la linea del tren (numerico num->linea)");
+        System.out.println("Seleccione la linea del tren ingresando el numero correspondiente (num->linea)");
         int seleccionLinea = scanner.nextInt();
+        scanner.nextLine();
         do {
             if ((seleccionLinea >= 1 && seleccionLinea <= lineas.longitud())) {
                 linea = (String) lineas.recuperar(seleccionLinea);
+                int begin=linea.indexOf(">")+1;
+                int end=linea.indexOf(")");
+                linea=linea.substring(begin, end);
             } else {
                 System.out.println("Linea no valida intente de nuevo");
             }
@@ -426,8 +425,7 @@ public class Main {
     }
     
     private static void bajaLinea(){
-        System.out.println("Ingrese el nombre de la linea a eliminar");
-        String nombre=scanner.nextLine();
+        String nombre = selectLinea();
         if(sistema.eliminarLinea(nombre)){
             System.out.println("La linea "+nombre+" ha sido eliminada con exito");
         }else{
@@ -436,8 +434,7 @@ public class Main {
     }
     
     private static void agregarEstacionLinea(){
-        System.out.println("Ingrese el nombre de la linea");
-        String nombreLinea=scanner.nextLine();
+        String nombreLinea = selectLinea();
         System.out.println("Ingrese el nombre de la estacion (debe encontrarse cargada previamente) a agregar en la linea "+nombreLinea);
         String nombreEstacion=scanner.nextLine();
         if(sistema.agregarEstacionALinea(nombreLinea, nombreEstacion)){
@@ -448,8 +445,7 @@ public class Main {
     }
     
     private static void eliminarEstacionLinea(){
-        System.out.println("Ingrese el nombre de la linea");
-        String nombreLinea=scanner.nextLine();
+        String nombreLinea=selectLinea();
         System.out.println("Ingrese el nombre de la estacion a eliminar de la linea "+nombreLinea);
         String nombreEstacion=scanner.nextLine();
         if(sistema.eliminarEstacionDeLinea(nombreLinea, nombreEstacion)){
@@ -512,4 +508,177 @@ public class Main {
             System.out.println(RED+"ERROR compruebe las estaciones ingresadas"+RESET);
         }
     }
+    
+    private static void consultaTrenes(){
+        int opcion;
+        boolean salir = false;
+        do {
+            System.out.println("MENU CONSULTA TRENES");
+            System.out.println("Seleccione una opcion");
+            System.out.println("1. Mostrar informacion de un Tren");
+            System.out.println("2. Verificar linea tren, mostrar ciudades que visitara");
+            System.out.println("3. Volver Menu Principal");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcion) {
+                case 1:
+                    mostrarInfoTren();
+                    break;
+                case 2:
+                    lineaTren();
+                    break;
+                case 3:
+                    salir=true;
+                    break;
+                default:
+                    System.out.println("Opcion no valida intente de nuevo");
+                    break;
+            }
+        }while(!salir);
+    }
+    
+    private static void mostrarInfoTren(){
+        String cadena="";
+        System.out.println("Ingrese el codigo unico numerico del tren");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        if((cadena=sistema.infoTren(id))!=null){
+            System.out.println(cadena);
+        }else{
+            System.out.println(RED+"Tren no encontrado"+RESET);
+        }
+    }
+    
+    private static void lineaTren(){
+        String cadena="";
+        System.out.println("Ingrese el codigo unico numerico del tren");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        if((cadena=sistema.ciudadesRecorridoTren(id))!=null){
+            System.out.println(cadena);
+        }else{
+            System.out.println(RED+"Tren no encontrado"+RESET);
+        }
+    }
+    
+    private static void consultaEstaciones(){
+        int opcion;
+        boolean salir = false;
+        do {
+            System.out.println("MENU CONSULTA ESTACIONES");
+            System.out.println("Seleccione una opcion");
+            System.out.println("1. Mostrar informacion de una Estacion");
+            System.out.println("2. Buscar estaciones por prefijo/subcadena");
+            System.out.println("3. Volver Menu Principal");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcion) {
+                case 1:
+                    mostrarInfoEstacion();
+                    break;
+                case 2:
+                    busquedaPrefijo();
+                    break;
+                case 3:
+                    salir=true;
+                    break;
+                default:
+                    System.out.println("Opcion no valida intente de nuevo");
+                    break;
+            }
+        }while(!salir);
+    }
+    
+    private static void mostrarInfoEstacion(){
+        String cadena="";
+        System.out.println("Ingrese el nombre de la estacion");
+        String nombre=scanner.nextLine();
+        if((cadena=sistema.infoEstacion(nombre))!=null){
+            System.out.println(cadena);
+        }else{
+            System.out.println(RED+"Estacion no encontrada"+RESET);
+        }
+    }
+    
+    private static void busquedaPrefijo(){
+        String cadena="";
+        System.out.println("Ingrese el prefijo deseado");
+        String nombre=scanner.nextLine();
+        System.out.println(sistema.busquedaEstacionesPrefijo(nombre));
+    }
+    
+    private static void consultaViajes(){
+        int opcion;
+        boolean salir = false;
+        do {
+            System.out.println("MENU CONSULTA VIAJES/CONEXIONES");
+            System.out.println("Seleccione una opcion");
+            System.out.println("1. Mostrar camino de A a B que pase por menos estaciones");
+            System.out.println("2. Mostrar camino de A a B que recorre la menor cantidad de km");
+            System.out.println("3. Mostrar todos los caminos posibles de A a B, sin pasar por estacion C");
+            System.out.println("4. Verificar si es posible viajar de estacion A a B, recorriendo un maximo de km indicados");
+            System.out.println("5. Volver Menu Principal");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcion) {
+                case 1:
+                    caminoMenosEstaciones();
+                    break;
+                case 2:
+                    caminoMenorRecorrido();
+                    break;
+                case 3:
+                    caminoDesdeAaBsinC();
+                    break;
+                case 4:
+                    caminoMaxRecorrido();
+                    break;
+                case 5:
+                    salir=true;
+                    break;
+                default:
+                    System.out.println("Opcion no valida intente de nuevo");
+                    break;
+            }
+        }while(!salir);
+    }
+    
+    private static void caminoMenosEstaciones(){
+        System.out.println("Ingrese la estacion de origen");
+        String origen=scanner.nextLine();
+        System.out.println("Ingrese estacion destino");
+        String destino=scanner.nextLine();
+        System.out.println(sistema.caminoMenosEstaciones(origen, destino));
+    }
+    
+    private static void caminoMenorRecorrido(){
+        System.out.println("Ingrese la estacion de origen");
+        String origen=scanner.nextLine();
+        System.out.println("Ingrese estacion destino");
+        String destino=scanner.nextLine();
+        System.out.println(sistema.caminoMenorKM(origen, destino));
+    }
+    
+    private static void caminoDesdeAaBsinC(){
+        System.out.println("Ingrese la estacion de origen");
+        String origen=scanner.nextLine();
+        System.out.println("Ingrese estacion destino");
+        String destino=scanner.nextLine();
+        System.out.println("Ingrese estacion por la que NO desea pasar");
+        String saltar=scanner.nextLine();
+        System.out.println(sistema.caminoA_BSinC(origen, destino, saltar));
+    }
+    
+    private static void caminoMaxRecorrido(){
+        System.out.println("Ingrese la estacion de origen");
+        String origen=scanner.nextLine();
+        System.out.println("Ingrese estacion destino");
+        String destino=scanner.nextLine();
+        System.out.println("Ingrese la distancia maxima tolerada en KM");
+        int distancia = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println(sistema.caminoMaxKM(origen, destino, distancia));
+    }
+    
+    
 }

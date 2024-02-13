@@ -5,11 +5,14 @@
 package edat.TrenesSA;
 
 import edat.estructuras.conjuntistas.Diccionario;
+import edat.estructuras.grafos.Camino;
 import edat.estructuras.grafos.Grafo;
 import edat.estructuras.lineales.dinamicas.Lista;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.StringTokenizer;
@@ -26,7 +29,10 @@ public class TrenesSA {
     private Grafo mapaEstaciones;
     private Diccionario trenes;
     private HashMap<String, Lista> lineas;
-    private final String carga="src\\cargaInicial\\cargaTotal.txt";
+    private final String carga = "src\\cargaInicial\\cargaTotal.txt";
+    private final String cambios="src\\cargaInicial\\cambios.txt";
+    
+    
 
     public TrenesSA() {
         estaciones = new Diccionario();
@@ -40,12 +46,14 @@ public class TrenesSA {
         boolean exito;
         Tren tren = new Tren(codigo, propulsion, cantVagPasaj, cantVagCarga, linea);
         exito = trenes.insertar(codigo, tren);
+        if(exito){registrarCambio("Tren "+codigo+" agregado con exito");}
         return exito;
     }
 
     public boolean eliminarTren(int codigoID) {
         boolean exito;
         exito = trenes.eliminar(codigoID);
+        if(exito){registrarCambio("Tren "+codigoID+" eliminado con exito");}
         return exito;
     }
 
@@ -56,6 +64,7 @@ public class TrenesSA {
         if (trenMod != null) {
             trenMod.setPropulsion(propulsion);
             exito = true;
+            registrarCambio("Tren "+id+" modificacion propulsion -> ("+propulsion+")");
         }
         return exito;
     }
@@ -67,6 +76,7 @@ public class TrenesSA {
         if (trenMod != null) {
             trenMod.setCantVagonesPasaj(vagPasajeros);
             exito = true;
+            registrarCambio("Tren "+id+" modificacion vagones pasajeros -> ("+vagPasajeros+")");
         }
         return exito;
     }
@@ -78,6 +88,7 @@ public class TrenesSA {
         if (trenMod != null) {
             trenMod.setCantVagonesCarga(vagCarga);
             exito = true;
+            registrarCambio("Tren "+id+" modificacion vagones decarga -> ("+vagCarga+")");
         }
         return exito;
     }
@@ -89,6 +100,7 @@ public class TrenesSA {
         if (trenMod != null) {
             trenMod.setLinea(nLinea);
             exito = true;
+            registrarCambio("Tren "+id+" modificacion de linea -> ("+nLinea+")");
         }
         return exito;
     }
@@ -100,6 +112,7 @@ public class TrenesSA {
         if (estaciones.insertar(nombre, estacion)) {
             mapaEstaciones.insertarVertice(nombre);
             exito = true;
+            registrarCambio("Estacion "+nombre+" agregada con exito");
         }
         return exito;
     }
@@ -109,6 +122,7 @@ public class TrenesSA {
         if (estaciones.eliminar(nombre)) {
             mapaEstaciones.eliminarVertice(nombre);
             exito = true;
+            registrarCambio("Estacion "+nombre+" eliminada con exito");
         }
         return exito;
     }
@@ -120,6 +134,7 @@ public class TrenesSA {
         if (estacionMod != null) {
             estacionMod.setCalle(calle);
             exito = true;
+            registrarCambio("Estacion "+nombre+" modificacion de calle -> ("+calle+")");
         }
         return exito;
     }
@@ -131,6 +146,7 @@ public class TrenesSA {
         if (estacionMod != null) {
             estacionMod.setNumeroCalle(num);
             exito = true;
+            registrarCambio("Estacion "+nombre+" modificacion de numero calle -> ("+num+")");
         }
         return exito;
     }
@@ -142,6 +158,7 @@ public class TrenesSA {
         if (estacionMod != null) {
             estacionMod.setCiudad(ciudad);
             exito = true;
+            registrarCambio("Estacion "+nombre+" modificacion de ciudad -> ("+ciudad+")");
         }
         return exito;
     }
@@ -153,6 +170,7 @@ public class TrenesSA {
         if (estacionMod != null) {
             estacionMod.setCodigoPostal(cp);
             exito = true;
+            registrarCambio("Estacion "+nombre+" modificacion codigo postal -> ("+cp+")");
         }
         return exito;
     }
@@ -164,6 +182,7 @@ public class TrenesSA {
         if (estacionMod != null) {
             estacionMod.setCantVias(cantVias);
             exito = true;
+            registrarCambio("Estacion "+nombre+" modificacion numero de vias -> ("+cantVias+")");
         }
         return exito;
     }
@@ -175,6 +194,7 @@ public class TrenesSA {
         if (estacionMod != null) {
             estacionMod.setCantPlataformas(cantPlataformas);
             exito = true;
+            registrarCambio("Estacion "+nombre+" modificacion numero Plataformas -> ("+cantPlataformas+")");
         }
         return exito;
     }
@@ -186,6 +206,7 @@ public class TrenesSA {
             Lista listaEstaciones = new Lista();
             lineas.put(nombre, listaEstaciones);
             exito = true;
+            registrarCambio("Linea "+nombre+" agregada con exito");
         }
         return exito;
     }
@@ -195,6 +216,7 @@ public class TrenesSA {
         if (lineas.containsKey(nombre)) {
             lineas.remove(nombre);
             exito = true;
+            registrarCambio("Linea "+nombre+" eliminada con exito");
         }
         return exito;
     }
@@ -207,6 +229,7 @@ public class TrenesSA {
             Lista listaEstaciones = lineas.get(nombreLinea);
             listaEstaciones.insertar(estacion, listaEstaciones.longitud() + 1);
             exito = true;
+            registrarCambio("Linea "+nombreLinea+" agrega estacion "+nombreEstacion);
         }
         return exito;
     }
@@ -226,6 +249,7 @@ public class TrenesSA {
             if (encontrado) {
                 listaEstaciones.eliminar(i - 1);
                 exito = true;
+                registrarCambio("Linea "+nombreLinea+" elimina estacion "+nombreEstacion);
             }
         }
         return exito;
@@ -235,12 +259,14 @@ public class TrenesSA {
     public boolean insertarConexion(Object origen, Object destino, int distancia) {
         boolean exito = false;
         exito = mapaEstaciones.insertarArco(origen, destino, distancia);
+        if(exito){registrarCambio("Nueva conexion "+origen+"-"+destino+" "+distancia+"km");}
         return exito;
     }
 
     public boolean eliminarConexion(Object origen, Object destino) {
         boolean exito = false;
         exito = mapaEstaciones.eliminarArco(origen, destino);
+        if(exito){registrarCambio("Conexion "+origen+"-"+destino+" eliminada");}
         return exito;
     }
 
@@ -265,10 +291,11 @@ public class TrenesSA {
         /*Dado un código de tren, verificar si está destinado a alguna línea
         y mostrar las ciudades que visitaría(Devuelve null si no se encuentra el tren)*/
         String cadena = null;
+        String ciudad = "";
         Tren tren = null;
         tren = (Tren) trenes.obtenerDato(id);
         if (tren != null) {
-            cadena="";
+            cadena = "";
             String lineaTren = tren.getLinea();
             if (lineas.containsKey(lineaTren)) {
                 Lista estacionesTren = lineas.get(lineaTren);
@@ -276,7 +303,10 @@ public class TrenesSA {
                 cadena = "CIUDADES QUE VISITA EL TREN " + id + " : ";
                 for (int j = 1; j <= longitud; j++) {
                     Estacion estacion = (Estacion) estacionesTren.recuperar(j);
-                    cadena = cadena + estacion.getCiudad() + " - ";
+                    ciudad = estacion.getCiudad();
+                    if (cadena.indexOf(ciudad) == -1) {
+                        cadena = cadena + ciudad + " - ";
+                    }
                 }
             } else {
                 cadena = "El tren no tiene ciudades asignadas aun";
@@ -289,58 +319,93 @@ public class TrenesSA {
     public String infoEstacion(String nombre) {
         //Dado un nombre de estación, mostrar toda su información
         String cadena = null;
-        Estacion estacion=null;
-        estacion=(Estacion) estaciones.obtenerDato(nombre);
-        if (estacion!=null) {
-            cadena="";
-            cadena=cadena+"NOMBRE: "+estacion.getNombre()+"\n";
-            cadena=cadena+"CALLE: "+estacion.getCalle()+"\n";
-            cadena=cadena+"NUMERO CALLE: "+estacion.getNumeroCalle()+"\n";
-            cadena=cadena+"CIUDAD: "+estacion.getCiudad()+"\n";
-            cadena=cadena+"CODIGO POSTAL: "+estacion.getCodigoPostal()+"\n";
-            cadena=cadena+"CANTIDAD DE VIAS: "+estacion.getCantVias()+"\n";
-            cadena=cadena+"CANTIDAD PLATAFORMAS: "+estacion.getCantPlataformas()+"\n";
+        Estacion estacion = null;
+        estacion = (Estacion) estaciones.obtenerDato(nombre);
+        if (estacion != null) {
+            cadena = "";
+            cadena = cadena + "NOMBRE: " + estacion.getNombre() + "\n";
+            cadena = cadena + "CALLE: " + estacion.getCalle() + "\n";
+            cadena = cadena + "NUMERO CALLE: " + estacion.getNumeroCalle() + "\n";
+            cadena = cadena + "CIUDAD: " + estacion.getCiudad() + "\n";
+            cadena = cadena + "CODIGO POSTAL: " + estacion.getCodigoPostal() + "\n";
+            cadena = cadena + "CANTIDAD DE VIAS: " + estacion.getCantVias() + "\n";
+            cadena = cadena + "CANTIDAD PLATAFORMAS: " + estacion.getCantPlataformas() + "\n";
         }
         return cadena;
     }
-    
-    public String busquedaEstacionesPrefijo(String subcadena){
+
+    public String busquedaEstacionesPrefijo(String subcadena) {
         //Dada una cadena, devolver todas las estaciones cuyo nombre comienza con dicha subcadena
-        String cadena="";
-        subcadena=subcadena.trim();
-        Lista lista = estaciones.listarRango(subcadena, subcadena+"ZZZZZZZZZZZ");
-        if(!lista.esVacia()){
-            cadena="Las estaciones con prefijo "+subcadena+" son: ";
+        String cadena = "";
+        subcadena = subcadena.trim();
+        Lista lista = estaciones.listarRango(subcadena, subcadena + "ZZZZZZZZZZZ");
+        if (!lista.esVacia()) {
+            cadena = "Las estaciones con prefijo " + subcadena + " son: ";
             int longitud = lista.longitud();
             for (int i = 1; i <= longitud; i++) {
-                cadena=cadena+"\n";
-                cadena=cadena+lista.recuperar(i);
+                cadena = cadena + "\n";
+                cadena = cadena + lista.recuperar(i);
             }
-        }else{
-            cadena="No existen estaciones con tal prefijo";
+        } else {
+            cadena = "No existen estaciones con tal prefijo";
         }
         return cadena;
     }
-    
+
     //***CONSULTAS VIAJES/MAPA GRAFOS***
-    public String caminoMenosEstaciones(String origen, String destino){
-        String cadena="";
-        Lista camino=mapaEstaciones.caminoMenosVertices(origen, destino);
-        if(!camino.esVacia()){
+    public String caminoMenosEstaciones(String origen, String destino) {
+        String cadena = "";
+        Lista camino = mapaEstaciones.caminoMenosVertices(origen, destino);
+        if (!camino.esVacia()) {
             int longitud = camino.longitud();
-            cadena="El camino desde "+origen+" a "+destino+" que pasa por menos estaciones es: ";
+            cadena = "El camino desde " + origen + " a " + destino + " que pasa por menos estaciones es: ";
             for (int i = 1; i <= longitud; i++) {
-                cadena=cadena+camino.recuperar(i)+" - ";
+                cadena = cadena + camino.recuperar(i) + " - ";
             }
-        }else{
-            cadena="Error no existe ningun camino. Verifique datos ingresados";
+        } else {
+            cadena = "Error no existe ningun camino. Verifique datos ingresados";
         }
         return cadena;
     }
     
+    public String caminoMenorKM(String origen, String destino){
+        String cadena = "";
+        Camino camino = mapaEstaciones.caminoMenorDistancia(origen, destino);
+        if (!camino.esVacio()) {
+            cadena = "El camino desde " + origen + " a " + destino + " que recorre menos KM es: "+camino.getRecorrido().toString()+" de "+ camino.getDistancia()+"KM";
+        } else {
+            cadena = "Error no existe ningun camino. Verifique datos ingresados";
+        }
+        return cadena;
+    }
     
+    public String caminoA_BSinC(String a, String b, String c){
+        String cadena = "";
+        Lista camino = mapaEstaciones.caminoSinVertice(a, b, c);
+        if (!camino.esVacia()) {
+            int longitud = camino.longitud();
+            cadena = "El camino desde " + a + " a " + b + " sin pasar por "+c+" es: ";
+            for (int i = 1; i <= longitud; i++) {
+                cadena = cadena + camino.recuperar(i) + "\n";
+            }
+        } else {
+            cadena = "Error no existe ningun camino. Verifique datos ingresados";
+        }
+        return cadena;
+    }
     
-    public void cargaInicial(){
+    public String caminoMaxKM(String origen, String destino, int max){
+        String cadena = "";
+        Camino camino = mapaEstaciones.caminMaxDistancia(origen, destino, max);
+        if (camino!=null) {
+            cadena = "El camino desde " + origen + " a " + destino + " que recorre como maximo "+max+"KM"+" es: "+camino.getRecorrido().toString()+" de "+ camino.getDistancia()+"KM";
+        } else {
+            cadena = "Nno existe ningun camino con los requisitos ingresados";
+        }
+        return cadena;
+    }
+
+    public void cargaInicial() {
         try {
             FileReader fileReader = new FileReader(carga);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -354,89 +419,106 @@ public class TrenesSA {
             Logger.getLogger(TrenesSA.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void carga(String linea){
+
+    private void carga(String linea) {
         StringTokenizer parametro = new StringTokenizer(linea, ";");
-        switch(parametro.nextToken()){
-            case"E":
-                String nombre=parametro.nextToken();
-                String calle=parametro.nextToken();
-                int numeroCalle=Integer.parseInt(parametro.nextToken());
-                String ciudad=parametro.nextToken();
-                int cp=Integer.parseInt(parametro.nextToken());
-                int cantVias=Integer.parseInt(parametro.nextToken());
-                int cantPlataformas=Integer.parseInt(parametro.nextToken());
-                Estacion e =new Estacion(nombre, calle, numeroCalle, ciudad, cp, cantVias, cantPlataformas);
-                if(estaciones.insertar(nombre, e) && mapaEstaciones.insertarVertice(nombre)){
-                    System.out.println("Estacion " +nombre+" cargada con exito");
-                }else{
-                    System.out.println("ERROR AL CARGAR ESTACION "+nombre);
+        switch (parametro.nextToken()) {
+            case "E":
+                String nombre = parametro.nextToken();
+                String calle = parametro.nextToken();
+                int numeroCalle = Integer.parseInt(parametro.nextToken());
+                String ciudad = parametro.nextToken();
+                int cp = Integer.parseInt(parametro.nextToken());
+                int cantVias = Integer.parseInt(parametro.nextToken());
+                int cantPlataformas = Integer.parseInt(parametro.nextToken());
+                Estacion e = new Estacion(nombre, calle, numeroCalle, ciudad, cp, cantVias, cantPlataformas);
+                if (estaciones.insertar(nombre, e) && mapaEstaciones.insertarVertice(nombre)) {
+                    System.out.println("Estacion " + nombre + " cargada con exito");
+                    registrarCambio("Estacion " + nombre + " cargada con exito");
+                } else {
+                    System.out.println("ERROR AL CARGAR ESTACION " + nombre);
                 }
                 break;
-            case"T":
-                int id=Integer.parseInt(parametro.nextToken());
-                String propulsion=parametro.nextToken();
-                int vagPasaj=Integer.parseInt(parametro.nextToken());
-                int vagCarga=Integer.parseInt(parametro.nextToken());
-                String lineaT=parametro.nextToken();
-                Tren t=new Tren(id, propulsion, vagPasaj, vagCarga, lineaT);
-                if(trenes.insertar(id, t)){
-                    System.out.println("Tren "+id+" cargado con exito");
-                }else{
-                    System.out.println("ERROR AL CARGAR EL TREN "+id);
+            case "T":
+                int id = Integer.parseInt(parametro.nextToken());
+                String propulsion = parametro.nextToken();
+                int vagPasaj = Integer.parseInt(parametro.nextToken());
+                int vagCarga = Integer.parseInt(parametro.nextToken());
+                String lineaT = parametro.nextToken();
+                Tren t = new Tren(id, propulsion, vagPasaj, vagCarga, lineaT);
+                if (trenes.insertar(id, t)) {
+                    System.out.println("Tren " + id + " cargado con exito");
+                    registrarCambio("Tren " + id + " cargado con exito");
+                } else {
+                    System.out.println("ERROR AL CARGAR EL TREN " + id);
                 }
                 break;
-            case"R":
-                String e1=parametro.nextToken();
-                String e2=parametro.nextToken();
+            case "R":
+                String e1 = parametro.nextToken();
+                String e2 = parametro.nextToken();
                 int km = Integer.parseInt(parametro.nextToken());
-                if(mapaEstaciones.insertarArco(e1, e2, km)){
-                    System.out.println("Conexion entre "+e1+" "+e2+ " - "+km+"km");
-                }else{
-                    System.out.println("ERROR AL INSERTAR CONEXION "+e1+" "+e2+ " - "+km+"km");
+                if (mapaEstaciones.insertarArco(e1, e2, km)) {
+                    System.out.println("Conexion entre " + e1 + " " + e2 + " - " + km + "km agregada");
+                    registrarCambio("Conexion entre " + e1 + " " + e2 + " - " + km + "km agregada");
+                } else {
+                    System.out.println("ERROR AL INSERTAR CONEXION " + e1 + " " + e2 + " - " + km + "km");
                 }
                 break;
-            case"L":
-                String nombreLinea=parametro.nextToken();
-                if(!lineas.containsKey(nombreLinea)){ //Si la linea no se encuentra aun cargada
-                    Lista listaEstaciones=new Lista();
-                    while(parametro.hasMoreTokens()){
-                        String nombreEstacion=parametro.nextToken();
-                        Object aux=estaciones.obtenerDato(nombreEstacion);
-                        if((aux)!=null){ //Si existe la estacion
-                            listaEstaciones.insertar(aux, listaEstaciones.longitud()+1);
-                        }else{
-                            System.out.println("ERROR ESTACION "+nombreEstacion+" NO EXISTE");
+            case "L":
+                String nombreLinea = parametro.nextToken();
+                if (!lineas.containsKey(nombreLinea)) { //Si la linea no se encuentra aun cargada
+                    Lista listaEstaciones = new Lista();
+                    while (parametro.hasMoreTokens()) {
+                        String nombreEstacion = parametro.nextToken();
+                        Object aux = estaciones.obtenerDato(nombreEstacion);
+                        if ((aux) != null) { //Si existe la estacion
+                            listaEstaciones.insertar(aux, listaEstaciones.longitud() + 1);
+                        } else {
+                            System.out.println("ERROR ESTACION " + nombreEstacion + " NO EXISTE");
                         }
                     }
                     lineas.put(nombreLinea, listaEstaciones); //Insercion exitosa
-                    System.out.println("Linea "+nombreLinea+" agregada con exito");
-                }else{
-                    System.out.println("ERROR LA LINEA "+nombreLinea+" YA SE ENCUENTRA CARGADA");
+                    System.out.println("Linea " + nombreLinea + " agregada con exito");
+                    registrarCambio("Linea " + nombreLinea + " agregada con exito");
+                } else {
+                    System.out.println("ERROR LA LINEA " + nombreLinea + " YA SE ENCUENTRA CARGADA");
                 }
                 break;
         }
     }
-    
-    public String mostrarSistema(){
-        String cadena="";
-        cadena=">>> DETALLE SISTEMA CARGADO <<<\n";
-        cadena=cadena+"----TRENES----\n"+trenes.toString()+"\n";
-        cadena=cadena+"----ESTACIONES----\n"+estaciones.toString()+"\n";
-        cadena=cadena+"----LINEAS----\n"+lineas.keySet()+"\n";
-        cadena=cadena+"----MAPA DE TRENES----\n"+mapaEstaciones.toString()+"\n";
+
+    public String mostrarSistema() {
+        String cadena = "";
+        cadena = ">>> DETALLE SISTEMA CARGADO <<<\n";
+        cadena = cadena + "----TRENES----\n" + trenes.toString() + "\n";
+        cadena = cadena + "----ESTACIONES----\n" + estaciones.toString() + "\n";
+        cadena = cadena + "----LINEAS----\n" + lineas.keySet() + "\n";
+        cadena = cadena + "----MAPA DE TRENES----\n" + mapaEstaciones.toString() + "\n";
         return cadena;
     }
 
-    
-    public Lista obtenerListaLineas(){
-        Lista lista=new Lista();
-        int i=1;
+    public Lista obtenerListaLineas() {
+        Lista lista = new Lista();
+        int i = 1;
         for (String linea : lineas.keySet()) {
-            lista.insertar("("+i+"->"+linea+")", lista.longitud()+1);
+            lista.insertar("(" + i + "->" + linea + ")", lista.longitud() + 1);
             i++;
         }
-        lista.insertar("("+i+"->"+"no-asignado"+")", lista.longitud()+1);
+        lista.insertar("(" + i + "->" + "no-asignado" + ")", lista.longitud() + 1);
         return lista;
+    }
+    
+    private void registrarCambio(String actualizacion){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(cambios, true))) {
+            writer.write(actualizacion);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Error al escribir cambios en txt " + e.getMessage());
+        }
+    }
+    
+    public void terminarEjecucion(){
+        //Este metodo se utiliza para guardar estado del sistema al momento de terminar de ejecutarse
+        registrarCambio(mostrarSistema());
     }
 }
