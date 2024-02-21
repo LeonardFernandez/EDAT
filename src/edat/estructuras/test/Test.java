@@ -27,7 +27,7 @@ public class Test {
         grafo.insertarArco("A", "E", 8);
         grafo.insertarArco("A", "D", 3);
         grafo.insertarArco("A", "C", 7);
-        grafo.insertarArco("C", "B", 21);
+        grafo.insertarArco("C", "B", 7);
         grafo.insertarArco("E", "F", 3);
         grafo.insertarArco("E", "X", 2);
         grafo.insertarArco("D", "X", 2);
@@ -42,8 +42,8 @@ public class Test {
 //        for (int i = 1; i <= camino.longitud(); i++) {
 //            System.out.println(camino.recuperar(i).toString());
 //        }
-        Camino camino = new Camino();
-        camino = grafo.caminMaxDistancia("A", "B", 12);
+        Lista camino;
+        camino = grafo.caminoDePesoMenor("A", "F", 25);
         System.out.println(camino.toString());
         }
     }

@@ -493,7 +493,7 @@ public class TrenesSA {
         cadena = cadena + "----TRENES----\n" + trenes.toString() + "\n";
         cadena = cadena + "----ESTACIONES----\n" + estaciones.toString() + "\n";
         cadena = cadena + "----LINEAS----\n" + lineas.keySet() + "\n";
-        cadena = cadena + "----MAPA DE TRENES----\n" + mapaEstaciones.toString() + "\n";
+        cadena = cadena + "----MAPA DE ESTACIONES----\n" + mapaEstaciones.toString() + "\n";
         return cadena;
     }
 

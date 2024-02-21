@@ -77,141 +77,718 @@ Tren 63 cargado con exito
 Tren 68 cargado con exito
 Tren 75 cargado con exito
 Tren 79 cargado con exito
->>> DETALLE SISTEMA CARGADO <<<
-----TRENES----
-35  HI:20  HD:60     Altura: 4
-20  HI:6  HD:27     Altura: 2
-6  HI:2  HD:13     Altura: 1
-2  HI:HD:     Altura: 0
-13  HI:HD:     Altura: 0
-27  HI:22  HD:31     Altura: 1
-22  HI:HD:     Altura: 0
-31  HI:HD:     Altura: 0
-60  HI:47  HD:68     Altura: 3
-47  HI:42  HD:56     Altura: 2
-42  HI:36  HD:44     Altura: 1
-36  HI:HD:     Altura: 0
-44  HI:HD:     Altura: 0
-56  HI:55  HD:59     Altura: 1
-55  HI:HD:     Altura: 0
-59  HI:HD:     Altura: 0
-68  HI:63  HD:75     Altura: 2
-63  HI:HD:     Altura: 0
-75  HI:HD:79     Altura: 1
-79  HI:HD:     Altura: 0
-
-----ESTACIONES----
-Lavalle  HI:Catedral  HD:Rodriguez     Altura: 4
-Catedral  HI:Borges  HD:La Plata     Altura: 3
-Borges  HI:Belgrano  HD:Caseros     Altura: 2
-Belgrano  HI:Alem  HD:Bolivar     Altura: 1
-Alem  HI:HD:     Altura: 0
-Bolivar  HI:HD:     Altura: 0
-Caseros  HI:Callao  HD:     Altura: 1
-Callao  HI:HD:     Altura: 0
-La Plata  HI:Fernandez  HD:Lanteri     Altura: 2
-Fernandez  HI:Cordoba  HD:Juramento     Altura: 1
-Cordoba  HI:HD:     Altura: 0
-Juramento  HI:HD:     Altura: 0
-Lanteri  HI:HD:Las Heras     Altura: 1
-Las Heras  HI:HD:     Altura: 0
-Rodriguez  HI:Plaza Mistere  HD:Venezuela     Altura: 3
-Plaza Mistere  HI:Pellegrini  HD:Pueyrredon     Altura: 2
-Pellegrini  HI:Patricios  HD:Peru     Altura: 1
-Patricios  HI:HD:     Altura: 0
-Peru  HI:HD:     Altura: 0
-Pueyrredon  HI:Plaza de Mayo  HD:Roca     Altura: 1
-Plaza de Mayo  HI:HD:     Altura: 0
-Roca  HI:HD:     Altura: 0
-Venezuela  HI:HD:Viedma     Altura: 1
-Viedma  HI:HD:     Altura: 0
-
-----LINEAS----
-[A, B, C, D, E]
-----MAPA DE TRENES----
-#Pellegrini
-     ---22->Callao
-     ---59->Catedral
-#Juramento
-     ---30->Roca
-     ---25->Pueyrredon
-#Roca
-     ---30->Juramento
-     ---40->Fernandez
-#Callao
-     ---23->Pueyrredon
-     ---22->Pellegrini
-     ---25->Las Heras
-     ---27->Bolivar
-#Bolivar
-     ---27->Callao
-     ---23->Belgrano
-#La Plata
-     ---50->Peru
-#Lanteri
-     ---70->Las Heras
-#Las Heras
-     ---70->Lanteri
-     ---60->Pueyrredon
-     ---25->Callao
-#Pueyrredon
-     ---25->Juramento
-     ---23->Callao
-     ---60->Las Heras
-     ---20->Cordoba
-#Cordoba
-     ---20->Pueyrredon
-     ---23->Venezuela
-#Caseros
-     ---45->Plaza Mistere
-     ---90->Patricios
-#Patricios
-     ---90->Caseros
-#Plaza de Mayo
-     ---28->Catedral
-     ---55->Peru
-#Peru
-     ---19->Plaza Mistere
-     ---55->Plaza de Mayo
-     ---14->Belgrano
-     ---50->La Plata
-#Plaza Mistere
-     ---40->Rodriguez
-     ---19->Peru
-     ---30->Venezuela
-     ---45->Caseros
-#Rodriguez
-     ---93->Borges
-     ---40->Plaza Mistere
-#Borges
-     ---76->Fernandez
-     ---93->Rodriguez
-#Fernandez
-     ---40->Roca
-     ---76->Borges
-     ---60->Viedma
-#Viedma
-     ---60->Fernandez
-     ---48->Venezuela
-#Venezuela
-     ---48->Viedma
-     ---24->Belgrano
-     ---23->Cordoba
-     ---30->Plaza Mistere
-#Belgrano
-     ---24->Venezuela
-     ---23->Catedral
-     ---23->Bolivar
-     ---14->Peru
-#Catedral
-     ---59->Pellegrini
-     ---28->Plaza de Mayo
-     ---23->Belgrano
-     ---29->Lavalle
-#Lavalle
-     ---29->Catedral
-     ---14->Alem
-#Alem
-     ---14->Lavalle
-
-
+Estacion Pellegrini eliminada con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Venezuela eliminada con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Pellegrini eliminada con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Alem cargada con exito
+Estacion Lavalle cargada con exito
+Estacion Catedral cargada con exito
+Estacion Belgrano cargada con exito
+Estacion Venezuela cargada con exito
+Estacion Viedma cargada con exito
+Estacion Fernandez cargada con exito
+Estacion Borges cargada con exito
+Estacion Rodriguez cargada con exito
+Estacion Plaza Mistere cargada con exito
+Estacion Peru cargada con exito
+Estacion Plaza de Mayo cargada con exito
+Estacion Patricios cargada con exito
+Estacion Caseros cargada con exito
+Estacion Cordoba cargada con exito
+Estacion Pueyrredon cargada con exito
+Estacion Las Heras cargada con exito
+Estacion Lanteri cargada con exito
+Estacion La Plata cargada con exito
+Estacion Bolivar cargada con exito
+Estacion Callao cargada con exito
+Estacion Roca cargada con exito
+Estacion Juramento cargada con exito
+Estacion Pellegrini cargada con exito
+Linea C agregada con exito
+Linea B agregada con exito
+Linea A agregada con exito
+Linea D agregada con exito
+Linea E agregada con exito
+Conexion entre La Plata Peru - 50km agregada
+Conexion entre Peru Belgrano - 14km agregada
+Conexion entre Belgrano Bolivar - 23km agregada
+Conexion entre Bolivar Callao - 27km agregada
+Conexion entre Callao Las Heras - 25km agregada
+Conexion entre Patricios Caseros - 90km agregada
+Conexion entre Caseros Plaza Mistere - 45km agregada
+Conexion entre Plaza Mistere Venezuela - 30km agregada
+Conexion entre Venezuela Cordoba - 23km agregada
+Conexion entre Cordoba Pueyrredon - 20km agregada
+Conexion entre Pueyrredon Las Heras - 60km agregada
+Conexion entre Las Heras Lanteri - 70km agregada
+Conexion entre Plaza de Mayo Peru - 55km agregada
+Conexion entre Peru Plaza Mistere - 19km agregada
+Conexion entre Plaza Mistere Rodriguez - 40km agregada
+Conexion entre Rodriguez Borges - 93km agregada
+Conexion entre Alem Lavalle - 14km agregada
+Conexion entre Lavalle Catedral - 29km agregada
+Conexion entre Catedral Belgrano - 23km agregada
+Conexion entre Belgrano Venezuela - 24km agregada
+Conexion entre Venezuela Viedma - 48km agregada
+Conexion entre Viedma Fernandez - 60km agregada
+Conexion entre Fernandez Borges - 76km agregada
+Conexion entre Fernandez Roca - 40km agregada
+Conexion entre Plaza de Mayo Catedral - 28km agregada
+Conexion entre Catedral Pellegrini - 59km agregada
+Conexion entre Pellegrini Callao - 22km agregada
+Conexion entre Callao Pueyrredon - 23km agregada
+Conexion entre Pueyrredon Juramento - 25km agregada
+Conexion entre Juramento Roca - 30km agregada
+Tren 2 cargado con exito
+Tren 6 cargado con exito
+Tren 13 cargado con exito
+Tren 20 cargado con exito
+Tren 22 cargado con exito
+Tren 27 cargado con exito
+Tren 31 cargado con exito
+Tren 35 cargado con exito
+Tren 36 cargado con exito
+Tren 42 cargado con exito
+Tren 44 cargado con exito
+Tren 47 cargado con exito
+Tren 55 cargado con exito
+Tren 56 cargado con exito
+Tren 59 cargado con exito
+Tren 60 cargado con exito
+Tren 63 cargado con exito
+Tren 68 cargado con exito
+Tren 75 cargado con exito
+Tren 79 cargado con exito
+Estacion Pellegrini eliminada con exito

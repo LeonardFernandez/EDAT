@@ -51,9 +51,6 @@ public class NodoAVLDic {
         return altura;
     }
 
-    public void setAltura(int altura) {
-        this.altura = altura;
-    }
 
     public NodoAVLDic getDerecho() {
         return derecho;

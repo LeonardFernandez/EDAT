@@ -106,6 +106,7 @@ public class Grafo {
         NodoVert nodoEliminar = null;
         if (!esVacio()) {
             if (inicio.getElem().equals(elem)) {
+                nodoEliminar=inicio;
                 inicio = inicio.getSigVertice();
             } else {
                 NodoVert aux = inicio;
@@ -335,5 +336,48 @@ public class Grafo {
             visitados.eliminar(visitados.longitud());
         }
         return caminoMaxDistancia;
+    }
+    
+    //***METODOS PRACTICA PARCIAL***
+    private Lista caminoPesoMenor(NodoVert vert, Object destino, int pesoActual, int pesoMax, Lista visitados, Lista caminoMenor){
+        if(vert!=null){
+            visitados.insertar(vert.getElem(), visitados.longitud()+1);
+            if(vert.getElem().equals(destino) && pesoActual<=pesoMax){
+                caminoMenor=visitados.clone();
+            }else{
+                NodoAdy ady = vert.getPrimerAdy();
+                while(ady!=null && caminoMenor.esVacia()){
+                    if(visitados.localizar(ady.getVertice().getElem())<0){
+                        if(pesoActual+ady.getEtiqueta()<=pesoMax){
+                            caminoMenor=caminoPesoMenor(ady.getVertice(),destino,pesoActual+ady.getEtiqueta(),pesoMax, visitados, caminoMenor);
+                        }
+                    }
+                    ady=ady.getSigAdyacente();
+                }
+            }
+            visitados.eliminar(visitados.longitud());
+        }
+        return caminoMenor;
+    }
+    
+    public Lista caminoDePesoMenor(Object origen, Object destino, int pesoMax){
+        NodoVert auxO=null;
+        NodoVert auxD=null;
+        NodoVert aux=inicio;
+        Lista camino=new Lista();
+        while((auxO==null || auxD==null) && aux!=null){
+            if(aux.getElem().equals(origen)){
+                auxO=aux;
+            }
+            if(aux.getElem().equals(destino)){
+                auxD=aux;
+            }
+            aux=aux.getSigVertice();
+        }
+        if(auxO!=null && auxD!=null){
+            Lista visitados=new Lista();
+            camino=caminoPesoMenor(auxO, destino, 0, pesoMax, visitados, camino);
+        }
+        return camino;
     }
 }
